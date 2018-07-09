@@ -20,3 +20,31 @@ std::string commandToString(BrainfuckCommand command)
 	default: return "(!) INTERNAL ERROR: Could not convert BrainfuckCommand to string";
 	}
 }
+
+// I have no idea what this does or how it does it - I just copied it off of the internet
+std::string runCmd(std::string cmd, bool printOutput)
+{
+    std::string result = "";
+    FILE* pipe = _popen(cmd.c_str(), "r");
+    if (!pipe) throw std::runtime_error("popen() failed in getOutputFromCmd");
+    try {
+        while (!feof(pipe)) {
+			char c;
+            if ((c=getc(pipe)) != EOF)
+			{
+                result += c;
+                
+                if (printOutput)
+				{
+					std::cout << c;
+					std::cout.flush();
+				}
+			}
+        }
+    } catch (...) {
+        _pclose(pipe);
+        throw;
+    }
+    _pclose(pipe);
+    return result;
+}

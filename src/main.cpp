@@ -4,6 +4,8 @@
 #include "../h/Functions.h"
 #include "../h/ActionTree.h"
 
+#include <stdlib.h>
+
 int main(int argc, char *argv[])
 {
 	Flags *flags = new Flags{ argc, argv };
@@ -29,8 +31,7 @@ int main(int argc, char *argv[])
 	{
 		std::cout << "Compiling \"" << outputName << "\" with G++...\n";
 		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) };
-		std::cout << compileCommand;
-		system(compileCommand.c_str());
+		runCmd(compileCommand);
 	}
 
 	return 0;
