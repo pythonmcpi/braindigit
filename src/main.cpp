@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	flags->handle();
 
 	std::ifstream inputFile{ flags->fileName() };
+	std::cout << flags->fileName();
 
 	Lexer *lexer = new Lexer{ inputFile };
 
@@ -25,13 +26,14 @@ int main(int argc, char *argv[])
 	ActionTree *actionTree = new ActionTree{ *lexer, outputFile, flags->pause() };
 	actionTree->writeActions();
 
-	std::cout << "\"" << flags->fileName() << "\" transpiled to \"" << outputName << "\".\n";
+	std::cout << "->" << outputName << ": Transpiled successfully";
 
 	if (flags->compile())
 	{
-		std::cout << "Compiling \"" << outputName << "\" with G++...\n";
-		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) };
-		runCmd(compileCommand);
+		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) + "\n" };
+		std::ofstream compileScript{ "compile.bat" };
+		compileScript << compileCommand;
+		std::cout << "(i) Run the command 'compile' to finish compilation.\n";
 	}
 
 	return 0;
