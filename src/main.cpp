@@ -4,9 +4,7 @@
 #include "../h/Functions.h"
 #include "../h/ActionTree.h"
 
-#include <stdlib.h>
-
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	Flags *flags = new Flags{ argc, argv };
 	flags->handle();
@@ -26,14 +24,18 @@ int main(int argc, char *argv[])
 	ActionTree *actionTree = new ActionTree{ *lexer, outputFile, flags->pause() };
 	actionTree->writeActions();
 
-	std::cout << "->" << outputName << ": Transpiled successfully";
+	std::cout << " -> " << outputName << ": ";
+
+	SETCOL_LIGHT_GRN
+	std::cout << "Transpiled successfully";
+	RESET_COL
+
+	std::cout << "\n";
 
 	if (flags->compile())
 	{
-		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) + "\n" };
-		std::ofstream compileScript{ "compile.bat" };
-		compileScript << compileCommand;
-		std::cout << "(i) Run the command 'compile' to finish compilation.\n";
+		std::string compileCommand{ "g++ " + outputName + " -Wl,--subsystem,native -o " + outputName.substr(0, outputName.find('.')) + "\n" };
+		system(compileCommand.c_str());
 	}
 
 	return 0;

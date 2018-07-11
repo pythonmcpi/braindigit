@@ -108,6 +108,7 @@
   <ItemGroup>
     <ClInclude Include="..\h\ActionTree.h" />
     <ClInclude Include="..\h\BrainfuckCommand.h" />
+    <ClInclude Include="..\h\TextColour.h" />
     <ClInclude Include="..\h\Common.h" />
     <ClInclude Include="..\h\Functions.h" />
     <ClInclude Include="..\h\Flags.h" />
