@@ -26,16 +26,44 @@ int main(int argc, char* argv[])
 
 	std::cout << " -> " << outputName << ": ";
 
-	SETCOL_LIGHT_GRN
+	TextColour::set(DARK_GREEN);
 	std::cout << "Transpiled successfully";
-	RESET_COL
+	TextColour::reset();
 
 	std::cout << "\n";
 
 	if (flags->compile())
 	{
-		std::string compileCommand{ "g++ " + outputName + " -Wl,--subsystem,native -o " + outputName.substr(0, outputName.find('.')) + "\n" };
+		#ifndef _WIN32 // If not on Windows, just compile normally.
+		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) };
 		system(compileCommand.c_str());
+
+		#else // Otherwise, issue an error and instructions on how to compile properly
+		std::string compileCommand{ "@echo off\ncall \"\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\ncl /EHsc " + outputName };
+		
+		std::ofstream compileScript{ "compile.bat" };
+		
+		compileScript << compileCommand;
+
+		TextColour::set(LIGHT_RED);
+		std::cerr << "\n(i) PLEASE READ\n";
+		TextColour::reset();
+
+		std::cerr << "It looks like you're on Windows. Unfortunately, the Windows environment causes issues when "
+			<< "compiling C++ files from within Braindigit.\n";
+
+		TextColour::set(LIGHT_YELLOW);
+		std::cerr << "\n(i) WORKAROUND\n";
+		TextColour::reset();
+
+		std::cerr << "To work around this issue you can simply ";
+
+		TextColour::set(LIGHT_YELLOW);
+		std::cerr << "run the command 'compile' ";
+		TextColour::reset();
+
+		std::cerr << "after you run Braindigit to finish compiling your Brainfuck program.\n";
+		#endif
 	}
 
 	return 0;

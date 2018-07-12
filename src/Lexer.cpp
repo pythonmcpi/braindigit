@@ -19,9 +19,9 @@ void Lexer::analyseFile()
 	}
 	else
 	{
-		SETCOL_LIGHT_RED
+		TextColour::set(LIGHT_RED);
 		std::cerr << " <- could not open file\n";
-		RESET_COL
+		TextColour::reset();
 		exit(2);
 	}
 }
