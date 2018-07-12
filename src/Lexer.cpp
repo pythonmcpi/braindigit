@@ -19,7 +19,9 @@ void Lexer::analyseFile()
 	}
 	else
 	{
-		std::cerr << "(!) INTERNAL ERROR: Lexer could not read file\n";
+		TextColour::set(LIGHT_RED);
+		std::cerr << " <- could not open file\n";
+		TextColour::reset();
 		exit(2);
 	}
 }

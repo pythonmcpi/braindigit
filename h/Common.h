@@ -17,3 +17,8 @@
 #define VECTOR
 #include <vector>
 #endif
+
+#ifndef TEXTCOLOUR_H
+#define TEXTCOLOUR_H
+#include "TextColour.h"
+#endif

@@ -15,7 +15,7 @@ void Flags::handle()
 {
 	if (m_argc < 2 || m_argc > 5)
 	{
-		std::cerr << "Usage: brainfuck <file.b> | -p | -d | -t |\n";
+		std::cerr << "(i) Usage: braindigit <file.b> | -p | -d | -t |\n";
 		exit(2);
 	}
 

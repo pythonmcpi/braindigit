@@ -50,5 +50,8 @@
     <ClInclude Include="..\h\Functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\h\TextColour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
