@@ -6,4 +6,4 @@ before_install:
 
 compiler: clang
 
-script: ./tests.sh
+script: bash tests.sh
