@@ -6,4 +6,4 @@ before_install:
 
 compiler: clang
 
-script: bash tests.sh
+script: clang++ -std=c++11 src/*.cpp -o braindigit
