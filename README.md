@@ -1,5 +1,5 @@
 <p align="center">
-![Braindigit](https://github.com/Dandigit/braindigit/raw/master/md/img/braindigit-logo.png)
+<img src="https://github.com/Dandigit/braindigit/raw/master/md/img/braindigit-logo.png"></img>
 </p>
 
 Brainfuck is a classic esoteric programming language written by Urban Müller. It's made up of just 8 simple commands that manipulate an array 
