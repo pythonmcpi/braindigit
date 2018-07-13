@@ -39,4 +39,6 @@ sudo nano /etc/paths
 ```
 Enter your password when prompted. A text file will open in Nano containing a list of directories. Create a new line, then enter the path
 to the folder containing Braindigit, e.g:
+```
 /Users/dan/Braindigit
+```
