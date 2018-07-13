@@ -18,6 +18,11 @@
 #include <vector>
 #endif
 
+#ifndef ALGORITHM
+#define ALGORITHM
+#include <algorithm>
+#endif
+
 #ifndef TEXTCOLOUR_H
 #define TEXTCOLOUR_H
 #include "TextColour.h"
