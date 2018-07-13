@@ -6,5 +6,9 @@ easier, as you don't need to navigete to the directory it is stored in every tim
 ## Adding Braindigit to the Path
 ### Windows
 Adding directories to the path on Windows is very simple. Search for 'edit the system environment variables' in the start menu and click on
+this entry:
+![Edit the system environment variables](https://github.com/Dandigit/braindigit/raw/master/md/img/add-to-path.PNG)
+A popup panel titled "System Properties" will appear. At the bottom of it, just above the OK, Cancel and Apply buttons is a button labelled 
+"Environment Variables". Click on it. Another popup will appear, 
 
 ### macOS / Linux
