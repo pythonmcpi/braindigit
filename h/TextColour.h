@@ -71,8 +71,6 @@ namespace TextColour
 
 namespace TextColour
 {
-	const HANDLE hConsole{ GetStdHandle(STD_OUTPUT_HANDLE) };
-
 	inline void reset() { std::cout << "\033[39m"; }
 
 	inline void set(Colour colour)
