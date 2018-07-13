@@ -22,7 +22,8 @@ std::string commandToString(BrainfuckCommand command)
 }
 
 // I have no idea what this does or how it does it - I just copied it off of the internet
-std::string runCmd(std::string cmd, bool printOutput)
+// Commented out: unused, caused compatibility issues
+/* std::string runCmd(std::string cmd, bool printOutput)
 {
     std::string result = "";
     FILE* pipe = _popen(cmd.c_str(), "r");
@@ -47,4 +48,4 @@ std::string runCmd(std::string cmd, bool printOutput)
     }
     _pclose(pipe);
     return result;
-}
+} */
