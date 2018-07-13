@@ -1,4 +1,6 @@
+<p align="center">
 ![Braindigit](https://github.com/Dandigit/braindigit/raw/master/md/img/braindigit-logo.png)
+</p>
 
 Brainfuck is a classic esoteric programming language written by Urban Müller. It's made up of just 8 simple commands that manipulate an array 
 of 30,000 characters: `> < + - . , [ ]`. **Braindigit is a compiler for Brainfuck.** It takes Brainfuck code and turns it into something the 
