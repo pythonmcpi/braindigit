@@ -5,8 +5,7 @@ easier, as you don't need to navigete to the directory it is stored in every tim
 
 ## Adding Braindigit to the PATH
 ### Windows
-Adding directories to the path on Windows is very simple. Search for 'edit the system environment variables' in the start menu and click on
-this entry:
+Search for 'edit the system environment variables' in the start menu and click on this entry:
 
 ![Edit the system environment variables](https://github.com/Dandigit/braindigit/raw/master/md/img/add-to-path.PNG)
 
@@ -33,4 +32,11 @@ If you get an error that says `jsdkasdj.b <- could not open file` you've success
 error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` you've done it wrong and
 need to start again.
 
-### macOS / Linux
+### macOS
+Open a Terminal window and enter the following:
+```
+sudo nano /etc/paths
+```
+Enter your password when prompted. A text file will open in Nano containing a list of directories. Create a new line, then enter the path
+to the folder containing Braindigit, e.g:
+/Users/dan/Braindigit
