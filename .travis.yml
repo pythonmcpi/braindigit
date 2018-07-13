@@ -2,7 +2,7 @@ language: cpp
 
 before_install:
 - sudo apt-get update -qq
-- sudo apt-get install -qq clang build-essentials
+- sudo apt-get install -qq clang
 
 compiler: clang
 
