@@ -6,4 +6,4 @@ before_install:
 
 compiler: clang
 
-script: clang++ -std=c++11 src/*.cpp -o braindigit
+script: clang++ -std=c++17 src/*.cpp -o braindigit
