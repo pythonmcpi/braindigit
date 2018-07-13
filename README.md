@@ -1,6 +1,6 @@
 <p align="center">
 <img src="https://github.com/Dandigit/braindigit/raw/master/md/img/braindigit-logo.png"></img>
-<img src="https://travis-ci.org/Dandigit/braindigit.svg?branch=master">
+[![Build Status](https://travis-ci.org/Dandigit/braindigit.svg?branch=master)](https://travis-ci.org/Dandigit/braindigit)
 </p>
 
 Brainfuck is a classic esoteric programming language written by Urban Müller. It's made up of just 8 simple commands that manipulate an array 
