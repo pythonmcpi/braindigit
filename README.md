@@ -6,9 +6,11 @@
 </a>
 </p>
 
-Brainfuck is a classic esoteric programming language written by Urban Müller. It's made up of just 8 simple commands that manipulate an array 
-of 30,000 characters: `> < + - . , [ ]`. **Braindigit is a compiler for Brainfuck.** It takes Brainfuck code and turns it into something the 
-computer can understand. \
+**A compiler, transpiler and interpreter for Brainfuck.** \
+Brainfuck is a classic esoteric programming language written by Urban Müller. It's made up of just 8 simple commands that 
+manipulate an array of 30,000 characters: `> < + - . , [ ]`. Braindigit takes Brainfuck code and turns it into something the 
+computer can understand, so that you can focus on your Brainfuck program that solves climate change, ends terrorism and
+prevents nuclear war. [Source code here, by the way](http://heeeeeeeey.com/).
 \
 Braindigit can...
 * Transpile Brainfuck code into C++
