@@ -6,23 +6,23 @@
 
 int main(int argc, char* argv[])
 {
-	Flags *flags = new Flags{ argc, argv };
-	flags->handle();
+	Flags flags{ argc, argv };
+	flags.handle();
 
-	std::ifstream inputFile{ flags->fileName() };
-	std::cout << flags->fileName();
+	std::ifstream inputFile{ flags.fileName() };
+	std::cout << flags.fileName();
 
-	Lexer *lexer = new Lexer{ inputFile };
+	Lexer lexer{ inputFile };
 
-	lexer->analyseFile();
+	lexer.analyseFile();
 
-	std::string outputName{ (flags->fileName().substr(0, flags->fileName().find('.')) + ".cpp") };
+	std::string outputName{ (flags.fileName().substr(0, flags.fileName().find('.')) + ".cpp") };
 
 	std::ofstream outputFile{ outputName };
 	writeBoilerplateCode(outputFile);
 
-	ActionTree *actionTree = new ActionTree{ *lexer, outputFile, flags->pause() };
-	actionTree->writeActions();
+	ActionTree actionTree{ lexer, outputFile, flags.pause() };
+	actionTree.writeActions();
 
 	std::cout << " -> " << outputName << ": ";
 
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
 	std::cout << "\n";
 
-	if (flags->compile())
+	if (flags.compile())
 	{
 		#ifndef _WIN32 // If not on Windows, just compile normally.
 		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) };

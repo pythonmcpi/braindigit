@@ -13,9 +13,13 @@ bool Flags::flagExists(const std::string& option)
 
 void Flags::handle()
 {
-	if (m_argc < 2 || m_argc > 5)
+	if (m_argc < 2 || m_argc > 5 || m_argc == 1)
 	{
-		std::cerr << "(i) Usage: braindigit <file.b> | -p | -d | -t |\n";
+		TextColour::set(LIGHT_YELLOW);
+		std::cerr << "(i) Usage: ";
+		TextColour::reset();
+
+		std::cerr << "braindigit <file.b> | -p | -d | -t |\n";
 		exit(2);
 	}
 
