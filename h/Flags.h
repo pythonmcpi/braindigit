@@ -1,27 +1,32 @@
-#include "../h/Common.h"
+#ifndef FLAGS_H
+#define FLAGS_H
+
+#include "Common.h"
 
 class Flags
 {
-	int m_argc;
-	char ** m_argv;
+	int m_flagCount;
+	vector<string> m_flagData;
 
-	std::string m_fileName;
+	bool m_verbose;
+	bool m_cppTranspile;
+	bool m_cTranspile;
 
-	bool m_pause;
-	bool m_debug;
-	bool m_compile;
+	std::string m_inputFilename;
+	std::string m_outputFilename;
 
 public:
 
-	Flags(int argc, char *argv[]);
-
-	bool flagExists(const std::string& option);
+	Flags(int flagCount, char **flagData);
 
 	void handle();
 
-	std::string &fileName();
+	const string &inputFilename() { return m_inputFilename; }
+	const string &outputFilename() { return m_outputFilename; }
 
-	bool pause();
-	bool debug();
-	bool compile();
+	bool verbose();
+	bool cppTranspile();
+	bool cTranspile();
 };
+
+#endif

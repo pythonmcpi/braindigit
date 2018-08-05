@@ -15,42 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\ActionTree.cpp">
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Interpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CPPTranspiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CTranspiler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Flags.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Lexer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Functions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\h\ActionTree.h">
+    <ClInclude Include="..\h\Interpreter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\h\Flags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\h\Lexer.h">
+    <ClInclude Include="..\h\CTranspiler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\h\BrainfuckCommand.h">
+    <ClInclude Include="..\h\CPPTranspiler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\h\Common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\h\Functions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\h\TextColour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

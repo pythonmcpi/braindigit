@@ -1,69 +1,65 @@
 #include "../h/Common.h"
 
 #include "../h/Flags.h"
-#include "../h/Functions.h"
-#include "../h/ActionTree.h"
+#include "../h/Interpreter.h"
+#include "../h/CPPTranspiler.h"
+#include "../h/CTranspiler.h"
 
-int main(int argc, char* argv[])
+using std::cout;
+using std::cin;
+using std::cerr;
+using std::getline;
+using std::ofstream;
+using std::ifstream;
+using std::vector;
+using std::string;
+
+string readFileToString(ifstream &file)
+{
+	string currentLine;
+	string allLines;
+
+	while (getline(file, currentLine))
+	{
+		allLines += currentLine;
+	}
+
+	return allLines;
+}
+
+int main(int argc, char *argv[])
 {
 	Flags flags{ argc, argv };
-	flags.handle();
 
-	std::ifstream inputFile{ flags.fileName() };
-	std::cout << flags.fileName();
+	ifstream inputFile{ flags.inputFilename() };
 
-	Lexer lexer{ inputFile };
-
-	lexer.analyseFile();
-
-	std::string outputName{ (flags.fileName().substr(0, flags.fileName().find('.')) + ".cpp") };
-
-	std::ofstream outputFile{ outputName };
-	writeBoilerplateCode(outputFile);
-
-	ActionTree actionTree{ lexer, outputFile, flags.pause() };
-	actionTree.writeActions();
-
-	std::cout << " -> " << outputName << ": ";
-
-	TextColour::set(DARK_GREEN);
-	std::cout << "Transpiled successfully";
-	TextColour::reset();
-
-	std::cout << "\n";
-
-	if (flags.compile())
+	if (!(inputFile.is_open()))
 	{
-		#ifndef _WIN32 // If not on Windows, just compile normally.
-		std::string compileCommand{ "g++ " + outputName + " -o " + outputName.substr(0, outputName.find('.')) };
-		system(compileCommand.c_str());
+		cerr << "Could not open input file: " << flags.inputFilename();
+		exit(-1);
+	}
 
-		#else // Otherwise, issue an error and instructions on how to compile properly
-		std::string compileCommand{ "@echo off\ncall \"\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\ncl /EHsc " + outputName };
-		
-		std::ofstream compileScript{ "compile.bat" };
-		
-		compileScript << compileCommand;
+	string fileContents{ readFileToString(inputFile) };
 
-		TextColour::set(LIGHT_RED);
-		std::cerr << "\n(i) PLEASE READ\n";
-		TextColour::reset();
+	if (flags.cppTranspile())
+	{
+		ofstream outputFile{ flags.outputFilename() };
 
-		std::cerr << "It looks like you're on Windows. Unfortunately, the Windows environment causes issues when "
-			<< "compiling C++ files from within Braindigit.\n";
+		CPPTranspiler cppTranspiler{ fileContents.c_str(), outputFile };
+		cppTranspiler.evaluate();
 
-		TextColour::set(LIGHT_YELLOW);
-		std::cerr << "\n(i) WORKAROUND\n";
-		TextColour::reset();
+	}
+	else if (flags.cTranspile())
+	{
+		ofstream outputFile{ flags.outputFilename() };
 
-		std::cerr << "To work around this issue you can simply ";
-
-		TextColour::set(LIGHT_YELLOW);
-		std::cerr << "run the command 'compile' ";
-		TextColour::reset();
-
-		std::cerr << "after you run Braindigit to finish compiling your Brainfuck program.\n";
-		#endif
+		CTranspiler cTranspiler{ fileContents.c_str(), outputFile };
+		cTranspiler.evaluate();
+	}
+	else
+	{
+		Interpreter interpreter{ fileContents.c_str() };
+		interpreter.evaluate();
 	}
 
 	return 0;

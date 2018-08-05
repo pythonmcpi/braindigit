@@ -1,64 +1,45 @@
 #include "../h/Flags.h"
 
-Flags::Flags(int argc, char *argv[])
-	: m_argc{ argc }, m_argv{ argv }, m_fileName{ argv[1] }, m_pause{ false }, m_debug{ false }, m_compile{ true }
+Flags::Flags(int flagCount, char **flagData)
+	: m_flagCount{ flagCount },
+	m_flagData{ flagData, flagData + flagCount },
+	m_cppTranspile{ false },
+	m_cTranspile{ false }
 {
-
-}
-
-bool Flags::flagExists(const std::string& option)
-{
-	return std::find(m_argv, m_argv + m_argc, option) != m_argv + m_argc;
+	handle();
 }
 
 void Flags::handle()
 {
-	if (m_argc < 2 || m_argc > 5 || m_argc == 1)
+	m_inputFilename = m_flagData[1];
+	m_outputFilename = m_inputFilename.substr(0, m_inputFilename.find('.')) + ".cpp";
+
+	if (m_flagData.size() > 2)
 	{
-		TextColour::set(LIGHT_YELLOW);
-		std::cerr << "(i) Usage: ";
-		TextColour::reset();
+		for (unsigned int currentIndex = 2; currentIndex < m_flagData.size(); ++currentIndex)
+		{
+			if (m_flagData[currentIndex] != "-v" &&
+				m_flagData[currentIndex] != "-o" &&
+				m_flagData[currentIndex] != "-c" &&
+				m_flagData[currentIndex] != "-cpp" &&
+				m_flagData[currentIndex] != "-c++")
+			{
+				std::cerr << "Invalid flag provided: " << m_flagData[currentIndex];
+				exit(-1);
+			}
 
-		std::cerr << "braindigit <file.b> | -p | -d | -t |\n";
-		exit(2);
-	}
-
-	if (flagExists("-d"))
-	{
-		m_debug = true;
-		std::cout << "(i) Debugging is enabled\n";
-	}
-
-	if (flagExists("-p"))
-	{
-		m_pause = true;
-		if (m_debug)
-			std::cout << "(i) Console pausing is enabled\n";
-	}
-	if (flagExists("-t"))
-	{
-		m_compile = false;
-		if (m_debug)
-			std::cout << "(i) Compiling is disabled\n";
+			if (m_flagData[currentIndex] == "-v")
+				m_verbose = true;
+			else if (m_flagData[currentIndex] == "-cpp" || m_flagData[currentIndex] == "-c++")
+				m_cppTranspile = true;
+			else if (m_flagData[currentIndex] == "-c")
+				m_cTranspile = true;
+			else if (m_flagData[currentIndex] == "-o")
+				m_outputFilename = m_flagData[++currentIndex];
+		}
 	}
 }
 
-std::string& Flags::fileName()
-{
-	return m_fileName;
-}
-
-bool Flags::pause()
-{
-	return m_pause;
-}
-
-bool Flags::debug()
-{
-	return m_debug;
-}
-
-bool Flags::compile()
-{
-	return m_compile;
-}
+bool Flags::verbose() { return m_verbose; }
+bool Flags::cppTranspile() { return m_cppTranspile; }
+bool Flags::cTranspile() { return m_cTranspile; }
