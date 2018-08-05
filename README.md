@@ -13,8 +13,9 @@ computer can understand, so that you can focus on your Brainfuck program that so
 prevents nuclear war. [Source code here, by the way](http://heeeeeeeey.com/).
 \
 Braindigit can...
-* Transpile Brainfuck code into C++
-* Compile Brainfuck code
+* Interpret Brainfuck code
+* Transpile Brainfuck code to C++ and C
+* And, in the future, compile Brainfuck code with LLVM
 
 ## Installing Braindigit
 To get started with Braindigit, first [build it](https://github.com/Dandigit/braindigit/blob/master/BUILDING.md). After you've built it, I recommend 
