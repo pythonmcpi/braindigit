@@ -26,6 +26,7 @@ So, you've got Braindigit and a freshly written Brainfuck Hello World program. T
 ```
 braindigit filename.b
 ```
-from your command line, replacing `filename.b` with the name of your Brainfuck file. This will (by default) invoke the interpreter. \
+from your command line, replacing `filename.b` with the name of your Brainfuck file. This will (by default) invoke the interpreter.
+
 Braindigit also offers some basic command line options to manipulate its behaviour. To list them all, simply run:
 `braindigit -h`
