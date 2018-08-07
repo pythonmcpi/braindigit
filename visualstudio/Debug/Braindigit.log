@@ -1,4 +1,8 @@
-﻿  Flags.cpp
+﻿  CPPTranspiler.cpp
+  CTranspiler.cpp
+  Flags.cpp
+  Interpreter.cpp
   main.cpp
+  System.cpp
   Generating Code...
   Braindigit.vcxproj -> C:\Users\dboulton\Source\Git\braindigit\visualstudio\Debug\Braindigit.exe

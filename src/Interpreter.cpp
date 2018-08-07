@@ -4,13 +4,13 @@ Interpreter::Interpreter(const char program[]) : m_cells{ 0 }, m_cellsPtr{ m_cel
 
 void Interpreter::incrementPtr()
 {
-	if (++m_currentCell > 29999) error("Semantic error", "Cannot increment the tape to values greater than 30000");
+	if (++m_currentCell > 29999) error("Cells error", "Cannot increment the tape to values greater than 30000");
 	++m_cellsPtr;
 }
 
 void Interpreter::decrementPtr()
 {
-	if (++m_currentCell < 0) error("Semantic error", "Cannot decrement the tape to values lesser than 0");
+	if (++m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
 	--m_cellsPtr;
 }
 

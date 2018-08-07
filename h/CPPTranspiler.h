@@ -9,6 +9,7 @@ class CPPTranspiler
 	const char *m_program;
 
 	int m_currentCell;
+	int m_openLoops;
 
 	void incrementPtr();
 	void decrementPtr();
