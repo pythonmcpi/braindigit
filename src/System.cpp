@@ -18,6 +18,14 @@ void warning(string warningType, string warningMessage)
 	cerr << warningMessage;
 }
 
+void success(string action, string message)
+{
+	cerr << action << ": ";
+	TextColour::set(LIGHT_GREEN);
+	cerr << message;
+	TextColour::reset();
+}
+
 /*
 void notify()
 {

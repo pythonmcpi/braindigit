@@ -11,6 +11,7 @@ using std::cerr;
 
 void error(string errorType, string errorMessage, int exitCode = -1);
 void warning(string warningType, string warningMessage);
+void success(string action, string message);
 
 
 /*

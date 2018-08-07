@@ -48,6 +48,8 @@ int main(int argc, char *argv[])
 		CPPTranspiler cppTranspiler{ fileContents.c_str(), outputFile };
 		cppTranspiler.evaluateProgram();
 
+		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
+
 	}
 	else if (flags.cTranspile())
 	{
@@ -55,6 +57,8 @@ int main(int argc, char *argv[])
 
 		CTranspiler cTranspiler{ fileContents.c_str(), outputFile };
 		cTranspiler.evaluateProgram();
+
+		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
 	}
 	else
 	{
