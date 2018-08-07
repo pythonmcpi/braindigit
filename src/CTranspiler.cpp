@@ -1,24 +1,22 @@
 #include "../h/CTranspiler.h"
 
 CTranspiler::CTranspiler(const char program[], ofstream &outputFile)
-	: m_program{ program }, m_outputFile{ outputFile }
+	: m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }
 {
-	if (!(m_outputFile.is_open()))
-	{
-		std::cerr << "Fatal error: Transpiler could not initialise output stream\n";
-		exit(-1);
-	}
+	if (!(m_outputFile.is_open())) error("Internal error", "Could not create output file. Try running Braindigit as an administrator.");
 
 	m_outputFile << "#include <stdio.h>\n\nint main()\n{\nchar cells[30000];\nchar *ptr = cells;\n";
 }
 
 void CTranspiler::incrementPtr()
 {
+	if (++m_currentCell > 29999) error("Semantic error", "Cannot increment the tape to values greater than 30000");
 	m_outputFile << "++ptr;\n";
 }
 
 void CTranspiler::decrementPtr()
 {
+	if (++m_currentCell < 0) error("Semantic error", "Cannot decrement the tape to values lesser than 0");
 	m_outputFile << "--ptr;\n";
 }
 
@@ -52,7 +50,7 @@ void CTranspiler::endLoop()
 	m_outputFile << "}\n";
 }
 
-void CTranspiler::evaluate()
+void CTranspiler::evaluateProgram()
 {
 	while (*m_program)
 	{
@@ -85,5 +83,7 @@ void CTranspiler::evaluate()
 
 		++m_program;
 	}
+
+	m_outputFile << "}\n";
 }
 

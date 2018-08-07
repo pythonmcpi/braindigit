@@ -8,9 +8,7 @@ class CPPTranspiler
 	ofstream &m_outputFile;
 	const char *m_program;
 
-public:
-
-	CPPTranspiler(const char program[], ofstream &outputFile);
+	int m_currentCell;
 
 	void incrementPtr();
 	void decrementPtr();
@@ -21,7 +19,11 @@ public:
 	void startLoop();
 	void endLoop();
 
-	void evaluate();
+public:
+
+	CPPTranspiler(const char program[], ofstream &outputFile);
+
+	void evaluateProgram();
 };
 
 #endif

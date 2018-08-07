@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 		ofstream outputFile{ flags.outputFilename() };
 
 		CPPTranspiler cppTranspiler{ fileContents.c_str(), outputFile };
-		cppTranspiler.evaluate();
+		cppTranspiler.evaluateProgram();
 
 	}
 	else if (flags.cTranspile())
@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
 		ofstream outputFile{ flags.outputFilename() };
 
 		CTranspiler cTranspiler{ fileContents.c_str(), outputFile };
-		cTranspiler.evaluate();
+		cTranspiler.evaluateProgram();
 	}
 	else
 	{
 		Interpreter interpreter{ fileContents.c_str() };
-		interpreter.evaluate();
+		interpreter.evaluateProgram();
 	}
 
 	return 0;

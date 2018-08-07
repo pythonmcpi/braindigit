@@ -6,6 +6,9 @@
 #include <string>
 #include <fstream>
 
+#include "TextColour.h"
+#include "System.h"
+
 using std::cout;
 using std::cin;
 using std::cerr;

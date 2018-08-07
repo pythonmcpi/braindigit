@@ -1,14 +1,16 @@
 #include "../h/Interpreter.h"
 
-Interpreter::Interpreter(const char program[]) : m_cells{ 0 }, m_cellsPtr{ m_cells }, m_program{ program } {}
+Interpreter::Interpreter(const char program[]) : m_cells{ 0 }, m_cellsPtr{ m_cells }, m_currentCell{ 0 }, m_program { program } {}
 
 void Interpreter::incrementPtr()
 {
+	if (++m_currentCell > 29999) error("Semantic error", "Cannot increment the tape to values greater than 30000");
 	++m_cellsPtr;
 }
 
 void Interpreter::decrementPtr()
 {
+	if (++m_currentCell < 0) error("Semantic error", "Cannot decrement the tape to values lesser than 0");
 	--m_cellsPtr;
 }
 
@@ -34,27 +36,31 @@ void Interpreter::inputByte()
 
 void Interpreter::startLoop()
 {
-	int bal = 1;
+	int offset{ 1 };
+
 	if (*m_cellsPtr == '\0') {
-		do {
+		do
+		{
 			++m_program;
-			if (*m_program == '[') bal++;
-			else if (*m_program == ']') bal--;
-		} while (bal != 0);
+			if (*m_program == '[') ++offset;
+			else if (*m_program == ']') --offset;
+		} while (offset != 0);
 	}
 }
 
 void Interpreter::endLoop()
 {
-	int bal = 0;
-	do {
-		if (*m_program == '[') bal++;
-		else if (*m_program == ']') bal--;
+	int offset{ 0 };
+
+	do
+	{
+		if (*m_program == '[') ++offset;
+		else if (*m_program == ']') --offset;
 		--m_program;
-	} while (bal != 0);
+	} while (offset != 0);
 }
 
-void Interpreter::evaluate()
+void Interpreter::evaluateProgram()
 {
 	while (*m_program)
 	{

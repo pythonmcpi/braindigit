@@ -13,8 +13,9 @@ computer can understand, so that you can focus on your Brainfuck program that so
 prevents nuclear war. [Source code here, by the way](http://heeeeeeeey.com/).
 \
 Braindigit can...
-* Transpile Brainfuck code into C++
-* Compile Brainfuck code
+* Interpret Brainfuck code
+* Transpile Brainfuck code to C++ and C
+* And, in the future, compile Brainfuck code with LLVM
 
 ## Installing Braindigit
 To get started with Braindigit, first [build it](https://github.com/Dandigit/braindigit/blob/master/BUILDING.md). After you've built it, I recommend 
@@ -25,17 +26,6 @@ So, you've got Braindigit and a freshly written Brainfuck Hello World program. T
 ```
 braindigit filename.b
 ```
-from your command line, replacing `filename.b` with the name of your Brainfuck file. \
-Braindigit also offers some basic command line options:
-```
-braindigit filename.b -p
-```
-will pause the console when your program finishes executing,
-```
-braindigit filename.b -t
-```
-will transpile your program to C++, and
-```
-braindigit filename.b -d
-```
-will enable the verbose debugging mode so that if something goes wrong, you can see why.
+from your command line, replacing `filename.b` with the name of your Brainfuck file. This will (by default) invoke the interpreter. \
+Braindigit also offers some basic command line options to manipulate its behaviour. To list them all, simply run:
+`braindigit -h`

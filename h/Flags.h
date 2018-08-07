@@ -15,11 +15,14 @@ class Flags
 	std::string m_inputFilename;
 	std::string m_outputFilename;
 
+	void validateFlagCount(unsigned int flagCount);
+	void validateFlag(string flag);
+
+	void handleFlags();
+
 public:
 
 	Flags(int flagCount, char **flagData);
-
-	void handle();
 
 	const string &inputFilename() { return m_inputFilename; }
 	const string &outputFilename() { return m_outputFilename; }
@@ -28,5 +31,4 @@ public:
 	bool cppTranspile();
 	bool cTranspile();
 };
-
 #endif

@@ -104,6 +104,7 @@
     <ClCompile Include="..\src\Flags.cpp" />
     <ClCompile Include="..\src\Interpreter.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\h\Common.h" />
@@ -111,6 +112,8 @@
     <ClInclude Include="..\h\CTranspiler.h" />
     <ClInclude Include="..\h\Flags.h" />
     <ClInclude Include="..\h\Interpreter.h" />
+    <ClInclude Include="..\h\System.h" />
+    <ClInclude Include="..\h\TextColour.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

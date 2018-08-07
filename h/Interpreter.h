@@ -8,11 +8,9 @@ class Interpreter
 	char m_cells[30000];
 	char *m_cellsPtr;
 
+	int m_currentCell;
+
 	const char *m_program;
-
-public:
-
-	Interpreter(const char program[]);
 
 	void incrementPtr();
 	void decrementPtr();
@@ -23,7 +21,11 @@ public:
 	void startLoop();
 	void endLoop();
 
-	void evaluate();
+public:
+
+	Interpreter(const char program[]);
+
+	void evaluateProgram();
 };
 
 #endif

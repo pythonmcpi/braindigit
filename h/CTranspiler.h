@@ -8,9 +8,7 @@ class CTranspiler
 	ofstream &m_outputFile;
 	const char *m_program;
 
-public:
-
-	CTranspiler(const char program[], ofstream &outputFile);
+	int m_currentCell;
 
 	void incrementPtr();
 	void decrementPtr();
@@ -21,7 +19,11 @@ public:
 	void startLoop();
 	void endLoop();
 
-	void evaluate();
+public:
+
+	CTranspiler(const char program[], ofstream &outputFile);
+
+	void evaluateProgram();
 };
 
 #endif
