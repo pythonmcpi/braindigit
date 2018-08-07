@@ -1,29 +1,21 @@
-#ifndef IOSTREAM
-#define IOSTREAM
+#ifndef COMMON_H
+#define COMMON_H
+
 #include <iostream>
-#endif
-
-#ifndef FSTREAM
-#define FSTREAM
-#include <fstream>
-#endif
-
-#ifndef STRING
-#define STRING
-#include <string>
-#endif
-
-#ifndef VECTOR
-#define VECTOR
 #include <vector>
-#endif
+#include <string>
+#include <fstream>
 
-#ifndef ALGORITHM
-#define ALGORITHM
-#include <algorithm>
-#endif
-
-#ifndef TEXTCOLOUR_H
-#define TEXTCOLOUR_H
 #include "TextColour.h"
+#include "System.h"
+
+using std::cout;
+using std::cin;
+using std::cerr;
+using std::getline;
+using std::ofstream;
+using std::ifstream;
+using std::vector;
+using std::string;
+
 #endif

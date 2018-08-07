@@ -26,17 +26,6 @@ So, you've got Braindigit and a freshly written Brainfuck Hello World program. T
 ```
 braindigit filename.b
 ```
-from your command line, replacing `filename.b` with the name of your Brainfuck file. \
-Braindigit also offers some basic command line options:
-```
-braindigit filename.b -p
-```
-will pause the console when your program finishes executing,
-```
-braindigit filename.b -t
-```
-will transpile your program to C++, and
-```
-braindigit filename.b -d
-```
-will enable the verbose debugging mode so that if something goes wrong, you can see why.
+from your command line, replacing `filename.b` with the name of your Brainfuck file. This will (by default) invoke the interpreter. \
+Braindigit also offers some basic command line options to manipulate its behaviour. To list them all, simply run:
+`braindigit -h`

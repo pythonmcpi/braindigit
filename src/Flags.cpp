@@ -1,64 +1,56 @@
 #include "../h/Flags.h"
 
-Flags::Flags(int argc, char *argv[])
-	: m_argc{ argc }, m_argv{ argv }, m_fileName{ argv[1] }, m_pause{ false }, m_debug{ false }, m_compile{ true }
+Flags::Flags(int flagCount, char **flagData)
+	: m_flagCount{ flagCount },
+	m_flagData{ flagData, flagData + flagCount },
+	m_cppTranspile{ false },
+	m_cTranspile{ false }
 {
-
+	handleFlags();
 }
 
-bool Flags::flagExists(const std::string& option)
+void Flags::validateFlag(string flag)
 {
-	return std::find(m_argv, m_argv + m_argc, option) != m_argv + m_argc;
-}
-
-void Flags::handle()
-{
-	if (m_argc < 2 || m_argc > 5 || m_argc == 1)
+	if (flag != "-v" &&
+		flag != "-o" &&
+		flag != "-c" &&
+		flag != "-cpp" &&
+		flag != "-c++")
 	{
-		TextColour::set(LIGHT_YELLOW);
-		std::cerr << "(i) Usage: ";
-		TextColour::reset();
-
-		std::cerr << "braindigit <file.b> | -p | -d | -t |\n";
-		exit(2);
-	}
-
-	if (flagExists("-d"))
-	{
-		m_debug = true;
-		std::cout << "(i) Debugging is enabled\n";
-	}
-
-	if (flagExists("-p"))
-	{
-		m_pause = true;
-		if (m_debug)
-			std::cout << "(i) Console pausing is enabled\n";
-	}
-	if (flagExists("-t"))
-	{
-		m_compile = false;
-		if (m_debug)
-			std::cout << "(i) Compiling is disabled\n";
+		error("Fatal error", "Invalid flag \"" + flag + "\"provided");
 	}
 }
 
-std::string& Flags::fileName()
+void Flags::handleFlags()
 {
-	return m_fileName;
+	if (m_flagData.size() < 2) error("Fatal error", "No input file provided");
+
+	m_inputFilename = m_flagData[1];
+	m_outputFilename = m_inputFilename.substr(0, m_inputFilename.find('.')) + ".cpp";
+
+	for (unsigned int currentIndex = 2; currentIndex < m_flagData.size(); ++currentIndex)
+	{
+		validateFlag(m_flagData[currentIndex]);
+
+		bool filenameProvided{ false };
+
+		if (m_flagData[currentIndex] == "-v")
+			m_verbose = true;
+		else if (m_flagData[currentIndex] == "-cpp" || m_flagData[currentIndex] == "-c++")
+			m_cppTranspile = true;
+		else if (m_flagData[currentIndex] == "-c")
+			m_cTranspile = true;
+		else if (m_flagData[currentIndex] == "-o")
+		{
+			m_outputFilename = m_flagData[++currentIndex];
+			filenameProvided = true;
+		}
+
+		if (filenameProvided && !(m_cppTranspile || m_cTranspile))
+			warning("Warning", "An output filename has been provided, however it will not be used as transpiling has not been enabled");
+	}
 }
 
-bool Flags::pause()
-{
-	return m_pause;
-}
-
-bool Flags::debug()
-{
-	return m_debug;
-}
-
-bool Flags::compile()
-{
-	return m_compile;
-}
+bool Flags::verbose() { return m_verbose; }
+bool Flags::cppTranspile() { return m_cppTranspile; }
+bool Flags::cTranspile() { return m_cTranspile; }

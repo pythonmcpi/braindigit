@@ -1,3 +1,6 @@
+#ifndef TEXTCOLOUR_H
+#define TEXTCOLOUR_H
+
 #ifndef COMMON_H
 #define COMMON_H
 #include "Common.h"
@@ -26,6 +29,7 @@ enum Colour
 	LIGHT_BLUE,
 	LIGHT_RED,
 	LIGHT_YELLOW,
+	LIGHT_DEFAULT,
 };
 
 #ifdef _WIN32
@@ -61,6 +65,9 @@ namespace TextColour
 		case LIGHT_YELLOW:
 			SetConsoleTextAttribute(hConsole, 14);
 			break;
+		case LIGHT_DEFAULT:
+			SetConsoleTextAttribute(hConsole, 15);
+			break;
 		default:
 			SetConsoleTextAttribute(hConsole, 7);
 		}
@@ -71,7 +78,7 @@ namespace TextColour
 
 namespace TextColour
 {
-	inline void reset() { std::cout << "\033[39m"; }
+	inline void reset() { std::cout << "\033[0m"; }
 
 	inline void set(Colour colour)
 	{
@@ -97,10 +104,14 @@ namespace TextColour
 			break;
 		case LIGHT_YELLOW:
 			std::cout << "\033[93m";
+			break;
+		case LIGHT_DEFAULT:
+			std::cout << "\033[1m";
 		default:
-			std::cout << "\033[39m";
+			std::cout << "\033[0m";
 		}
 	}
 }
 
+#endif
 #endif
