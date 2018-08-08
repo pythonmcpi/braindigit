@@ -4,6 +4,7 @@
 #include "../h/Interpreter.h"
 #include "../h/CPPTranspiler.h"
 #include "../h/CTranspiler.h"
+#include "../h/PythonTranspiler.h"
 
 using std::cout;
 using std::cin;
@@ -33,11 +34,7 @@ int main(int argc, char *argv[])
 
 	ifstream inputFile{ flags.inputFilename() };
 
-	if (!(inputFile.is_open()))
-	{
-		cerr << "Could not open input file: " << flags.inputFilename();
-		exit(-1);
-	}
+	if (!(inputFile.is_open())) error("Fatal error", "Could not open input file: " + flags.inputFilename());
 
 	string fileContents{ readFileToString(inputFile) };
 
@@ -57,6 +54,15 @@ int main(int argc, char *argv[])
 
 		CTranspiler cTranspiler{ fileContents.c_str(), outputFile };
 		cTranspiler.evaluateProgram();
+
+		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
+	}
+	else if (flags.pythonTranspile())
+	{
+		ofstream outputFile{ flags.outputFilename() };
+
+		PythonTranspiler pythonTranspiler{ fileContents.c_str(), outputFile };
+		pythonTranspiler.evaluateProgram();
 
 		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
 	}

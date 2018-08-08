@@ -16,7 +16,7 @@ void CTranspiler::incrementPtr()
 
 void CTranspiler::decrementPtr()
 {
-	if (++m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
+	if (--m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
 	m_outputFile << "--ptr;\n";
 }
 

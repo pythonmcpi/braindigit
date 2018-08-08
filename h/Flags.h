@@ -11,11 +11,11 @@ class Flags
 	bool m_verbose;
 	bool m_cppTranspile;
 	bool m_cTranspile;
+	bool m_pythonTranspile;
 
 	std::string m_inputFilename;
 	std::string m_outputFilename;
 
-	void validateFlagCount(unsigned int flagCount);
 	void validateFlag(string flag);
 
 	void handleFlags();
@@ -30,5 +30,6 @@ public:
 	bool verbose();
 	bool cppTranspile();
 	bool cTranspile();
+	bool pythonTranspile();
 };
 #endif

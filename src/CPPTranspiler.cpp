@@ -16,7 +16,7 @@ void CPPTranspiler::incrementPtr()
 
 void CPPTranspiler::decrementPtr()
 {
-	if (++m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
+	if (--m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
 	m_outputFile << "--ptr;\n";
 }
 
@@ -32,7 +32,7 @@ void CPPTranspiler::decrementByte()
 
 void CPPTranspiler::outputByte()
 {
-	m_outputFile << "std::cin.put(*ptr);\n";
+	m_outputFile << "std::cout.put(*ptr);\n";
 }
 
 void CPPTranspiler::inputByte()
@@ -83,6 +83,9 @@ void CPPTranspiler::evaluateProgram()
 
 		++m_program;
 	}
+
+	if (m_openLoops > 0) error("Loop error", "Unclosed loop, expected ']'");
+	if (m_openLoops < 0) error("Loop error", "Non-existent loop closed, expected '['");
 
 	m_outputFile << "}\n";
 }
