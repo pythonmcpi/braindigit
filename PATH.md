@@ -28,9 +28,9 @@ something up, open a Command Prompt window and type
 ```
 braindigit jsdkasdj.b
 ```
-If you get an error that says `jsdkasdj.b <- could not open file` you've successfully added Braindigit to you path. However, if you get an
-error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` you've done it wrong and
-need to start again.
+If you get an error that says `(!) Fatal error: Could not open input file: jsdkasdj.b` you've successfully added Braindigit to you path. 
+However, if you get an error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` 
+you've done it wrong and need to start again.
 
 ### macOS
 Open a Terminal window and enter the following:
@@ -42,9 +42,11 @@ to the folder containing Braindigit, e.g:
 ```
 /Users/dan/Braindigit
 ```
-Hit Ctrl+X and then press Y to exit Nano and save the file. After you've done that, hit Enter, then click OK on all of the popups until they are gone. If you'd like to check that you didn't stuff something up, open a Terminal window and type
+Hit Ctrl+X and then press Y to exit Nano and save the file. If you'd like to check that you didn't stuff something up, open a Terminal 
+window and type
 ```
 braindigit jsdkasdj.b
 ```
-If you get an error that says `jsdkasdj.b <- could not open file` you've successfully added Braindigit to you path. However, if you get an
-error saying `-bash: braindigit: command not found` you've done it wrong and need to start again.
+If you get an error that says `(!) Fatal error: Could not open input file: jsdkasdj.b` you've successfully added Braindigit to you path. 
+However, if you get an error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` 
+you've done it wrong and need to start again.

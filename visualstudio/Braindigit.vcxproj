@@ -104,6 +104,7 @@
     <ClCompile Include="..\src\Flags.cpp" />
     <ClCompile Include="..\src\Interpreter.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\PythonTranspiler.cpp" />
     <ClCompile Include="..\src\System.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +113,7 @@
     <ClInclude Include="..\h\CTranspiler.h" />
     <ClInclude Include="..\h\Flags.h" />
     <ClInclude Include="..\h\Interpreter.h" />
+    <ClInclude Include="..\h\PythonTranspiler.h" />
     <ClInclude Include="..\h\System.h" />
     <ClInclude Include="..\h\TextColour.h" />
   </ItemGroup>
