@@ -11,7 +11,8 @@ RubyTranspiler::RubyTranspiler(const char program[], ofstream &outputFile) :
 void RubyTranspiler::incrementPtr()
 {
 	++m_currentCell;
-	m_outputFile << m_loopIndents << "@ptr += 1\n" << m_loopIndents << "@cells.push(0) if @ptr == @cells.length\n";
+	m_outputFile << m_loopIndents << "@ptr += 1\n";
+	m_outputFile << m_loopIndents << "@cells.push(0) if @ptr == @cells.length\n";
 }
 
 void RubyTranspiler::decrementPtr()
@@ -42,7 +43,7 @@ void RubyTranspiler::inputByte()
 
 void RubyTranspiler::startLoop()
 {
-	m_outputFile << m_loopIndents << "while @cells[@ptr] >= 0\n";
+	m_outputFile << m_loopIndents << "while @cells[@ptr] != 0\n";
 	m_loopIndents += "\t";
 }
 
