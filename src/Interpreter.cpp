@@ -10,7 +10,7 @@ void Interpreter::incrementPtr()
 
 void Interpreter::decrementPtr()
 {
-	if (++m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
+	if (--m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
 	--m_cellsPtr;
 }
 
