@@ -22,7 +22,7 @@ To get started with Braindigit, first [build it](https://github.com/Dandigit/bra
 [adding it to the PATH](https://github.com/Dandigit/braindigit/blob/master/PATH.md) and then you're good to go!
 
 ## Using Braindigit
-So, you've got Braindigit and a freshly written Brainfuck Hello World program. To compile it with Braindigit, simply run:
+So, you've got Braindigit and a freshly written Brainfuck Hello World program. To run it with Braindigit, simply run:
 ```
 braindigit filename.b
 ```
