@@ -5,6 +5,7 @@
 #include "../h/CPPTranspiler.h"
 #include "../h/CTranspiler.h"
 #include "../h/PythonTranspiler.h"
+#include "../h/RubyTranspiler.h"
 
 using std::cout;
 using std::cin;
@@ -63,6 +64,15 @@ int main(int argc, char *argv[])
 
 		PythonTranspiler pythonTranspiler{ fileContents.c_str(), outputFile };
 		pythonTranspiler.evaluateProgram();
+
+		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
+	}
+	else if (flags.rubyTranspile())
+	{
+		ofstream outputFile{ flags.outputFilename() };
+
+		RubyTranspiler rubyTranspiler{ fileContents.c_str(), outputFile };
+		rubyTranspiler.evaluateProgram();
 
 		success(flags.inputFilename() + " -> " + flags.outputFilename(), "Transpiled successfuly");
 	}
