@@ -90,5 +90,5 @@ void PythonTranspiler::evaluateProgram()
 		++m_program;
 	}
 
-	if (m_loopIndents.length() > 0) ("Loop error", "Unclosed loop, expected ']'");
+	if (m_loopIndents.length() > 0) error("Loop error", "Unclosed loop, expected ']'");
 }
