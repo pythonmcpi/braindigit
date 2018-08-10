@@ -12,6 +12,7 @@ class Flags
 	bool m_cppTranspile;
 	bool m_cTranspile;
 	bool m_pythonTranspile;
+	bool m_rubyTranspile;
 
 	std::string m_inputFilename;
 	std::string m_outputFilename;
@@ -31,5 +32,6 @@ public:
 	bool cppTranspile();
 	bool cTranspile();
 	bool pythonTranspile();
+	bool rubyTranspile();
 };
 #endif
