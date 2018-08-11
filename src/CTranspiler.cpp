@@ -25,7 +25,7 @@ void CTranspiler::incrementByte()
 
 void CTranspiler::decrementByte()
 {
-	m_outputFile << "cells[ptr] = (cells[ptr] > 0 ? cells[ptr] - 1 : 29999)\n";
+	m_outputFile << "cells[ptr] = (cells[ptr] > 0 ? cells[ptr] - 1 : 29999);\n";
 }
 
 void CTranspiler::outputByte()
