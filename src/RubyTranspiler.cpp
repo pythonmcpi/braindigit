@@ -1,7 +1,7 @@
 #include "../h/RubyTranspiler.h"
 
 RubyTranspiler::RubyTranspiler(const char program[], ofstream &outputFile) :
-	m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }, m_loopIndents{ "" }
+	m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }, m_openLoops{ 0 }, m_loopIndents{ "" }
 {
 	if (!(m_outputFile.is_open())) error("Internal error", "Could not create output file. Try running Braindigit as an administrator.");
 
@@ -10,15 +10,13 @@ RubyTranspiler::RubyTranspiler(const char program[], ofstream &outputFile) :
 
 void RubyTranspiler::incrementPtr()
 {
-	++m_currentCell;
 	m_outputFile << m_loopIndents << "@ptr += 1\n";
 	m_outputFile << m_loopIndents << "@cells.push(0) if @ptr == @cells.length\n";
 }
 
 void RubyTranspiler::decrementPtr()
 {
-	if (--m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
-	m_outputFile << m_loopIndents << "@ptr -= 1\n";
+	m_outputFile << m_loopIndents << "@ptr = (@ptr == 0 ? @cells.size - 1 : @ptr - 1)\n";
 }
 
 void RubyTranspiler::incrementByte()
@@ -45,18 +43,15 @@ void RubyTranspiler::startLoop()
 {
 	m_outputFile << m_loopIndents << "while @cells[@ptr] != 0\n";
 	m_loopIndents += "\t";
+	++m_openLoops;
 }
 
 void RubyTranspiler::endLoop()
 {
-	if (m_loopIndents.length() == 0) error("Loop error", "Non-existent loop closed, expected '['");
-
-	// Subtract 1 indent from m_loopIndents
-
 	if (m_loopIndents.length() > 2) m_loopIndents = m_loopIndents.substr(0, m_loopIndents.length() - 2);
 	else m_loopIndents = "";
-
 	m_outputFile << m_loopIndents << "end\n";
+	--m_openLoops;
 }
 
 void RubyTranspiler::evaluateProgram()
@@ -93,5 +88,6 @@ void RubyTranspiler::evaluateProgram()
 		++m_program;
 	}
 
-	if (m_loopIndents.length() > 0) error("Loop error", "Unclosed loop, expected ']'");
+	if (m_openLoops > 0) error("Loop error", "Unclosed loop, expected ']'");
+	if (m_openLoops < 0) error("Loop error", "Non-existent loop closed, expected '['");
 }

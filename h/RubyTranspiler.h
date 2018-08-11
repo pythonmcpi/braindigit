@@ -9,6 +9,7 @@ class RubyTranspiler
 	const char *m_program;
 
 	int m_currentCell;
+	int m_openLoops;
 	string m_loopIndents;
 
 	void incrementPtr();

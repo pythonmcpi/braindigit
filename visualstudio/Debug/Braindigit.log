@@ -1,6 +1,2 @@
-﻿  Flags.cpp
-  PythonTranspiler.cpp
-  RubyTranspiler.cpp
-  main.cpp
-  Generating Code...
+﻿  CTranspiler.cpp
   Braindigit.vcxproj -> C:\Users\dboulton\Source\Git\braindigit\visualstudio\Debug\Braindigit.exe

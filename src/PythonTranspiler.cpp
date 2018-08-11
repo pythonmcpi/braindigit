@@ -1,7 +1,7 @@
 #include "../h/PythonTranspiler.h"
 
 PythonTranspiler::PythonTranspiler(const char program[], ofstream &outputFile) :
-	m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }, m_loopIndents{ "" }
+	m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }, m_openLoops{ 0 }, m_loopIndents{ "" }
 {
 	if (!(m_outputFile.is_open())) error("Internal error", "Could not create output file. Try running Braindigit as an administrator.");
 
@@ -10,14 +10,12 @@ PythonTranspiler::PythonTranspiler(const char program[], ofstream &outputFile) :
 
 void PythonTranspiler::incrementPtr()
 {
-	++m_currentCell;
 	m_outputFile << m_loopIndents << "ptr += 1\n" << m_loopIndents << "if ptr == len(cells): cells.append(0)\n";
 }
 
 void PythonTranspiler::decrementPtr()
 {
-	if (--m_currentCell < 0) error("Cells error", "Cannot decrement the tape to values lesser than 0");
-	m_outputFile << m_loopIndents << "ptr -= 1\n";
+	m_outputFile << m_loopIndents << "ptr = len(cells) - 1 if ptr == 0 else ptr - 1\n";
 }
 
 void PythonTranspiler::incrementByte()
@@ -44,16 +42,14 @@ void PythonTranspiler::startLoop()
 {
 	m_outputFile << m_loopIndents << "while cells[ptr]:\n";
 	m_loopIndents += "\t";
+	++m_openLoops;
 }
 
 void PythonTranspiler::endLoop()
 {
-	if (m_loopIndents.length() == 0) error("Loop error", "Non-existent loop closed, expected '['");
-
-	// Subtract 1 indent from m_loopIndents
-
 	if (m_loopIndents.length() > 2) m_loopIndents = m_loopIndents.substr(0, m_loopIndents.length() - 2);
 	else m_loopIndents = "";
+	--m_openLoops;
 }
 
 void PythonTranspiler::evaluateProgram()
@@ -90,5 +86,6 @@ void PythonTranspiler::evaluateProgram()
 		++m_program;
 	}
 
-	if (m_loopIndents.length() > 0) error("Loop error", "Unclosed loop, expected ']'");
+	if (m_openLoops > 0) error("Loop error", "Unclosed loop, expected ']'");
+	if (m_openLoops < 0) error("Loop error", "Non-existent loop closed, expected '['");
 }
