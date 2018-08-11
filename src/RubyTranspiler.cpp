@@ -21,12 +21,12 @@ void RubyTranspiler::decrementPtr()
 
 void RubyTranspiler::incrementByte()
 {
-	m_outputFile << m_loopIndents << "@cells[@ptr] += 1\n";
+	m_outputFile << m_loopIndents << "@cells[@ptr] = (@cells[@ptr] < 255 ? @cells[@ptr] + 1 : 0)\n";
 }
 
 void RubyTranspiler::decrementByte()
 {
-	m_outputFile << m_loopIndents << "@cells[@ptr] -= 1\n";
+	m_outputFile << m_loopIndents << "@cells[@ptr] = (@cells[@ptr] > 0 ? @cells[@ptr] - 1 : 255)\n";
 }
 
 void RubyTranspiler::outputByte()

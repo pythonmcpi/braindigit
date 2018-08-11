@@ -20,12 +20,12 @@ void PythonTranspiler::decrementPtr()
 
 void PythonTranspiler::incrementByte()
 {
-	m_outputFile << m_loopIndents << "cells[ptr] += 1\n";
+	m_outputFile << m_loopIndents << "cells[ptr] = cells[ptr] + 1 if cells[ptr] < 255 else 0\n";
 }
 
 void PythonTranspiler::decrementByte()
 {
-	m_outputFile << m_loopIndents << "cells[ptr] -= 1\n";
+	m_outputFile << m_loopIndents << "cells[ptr] = cells[ptr] - 1 if cells[ptr] > 0 else 255\n";
 }
 
 void PythonTranspiler::outputByte()
@@ -35,7 +35,7 @@ void PythonTranspiler::outputByte()
 
 void PythonTranspiler::inputByte()
 {
-	m_outputFile << m_loopIndents << "cells[ptr] = sys.stdin.read(1)\n";
+	m_outputFile << m_loopIndents << "cells[ptr] = ord(sys.stdin.read(1))\n";
 }
 
 void PythonTranspiler::startLoop()
