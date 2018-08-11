@@ -22,12 +22,12 @@ void CPPTranspiler::decrementPtr()
 
 void CPPTranspiler::incrementByte()
 {
-	m_outputFile << "++cells[ptr];\n";
+	m_outputFile << "cells[ptr] = (cells[ptr] < 255 ? cells[ptr] + 1 : 0);\n";
 }
 
 void CPPTranspiler::decrementByte()
 {
-	m_outputFile << "--cells[ptr];\n";
+	m_outputFile << "cells[ptr] = (cells[ptr] > 0 ? cells[ptr] - 1 : 255);\n";
 }
 
 void CPPTranspiler::outputByte()

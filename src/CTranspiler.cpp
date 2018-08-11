@@ -20,12 +20,12 @@ void CTranspiler::decrementPtr()
 
 void CTranspiler::incrementByte()
 {
-	m_outputFile << "++cells[ptr];\n";
+	m_outputFile << "cells[ptr] = (cells[ptr] < 255 ? cells[ptr] + 1 : 0);\n";
 }
 
 void CTranspiler::decrementByte()
 {
-	m_outputFile << "--cells[ptr];\n";
+	m_outputFile << "cells[ptr] = (cells[ptr] > 0 ? cells[ptr] - 1 : 29999)\n";
 }
 
 void CTranspiler::outputByte()
