@@ -32,7 +32,6 @@ void Flags::handleFlags()
 	if (m_flagData.size() < 2) error("Fatal error", "No input file provided");
 
 	m_inputFilename = m_flagData[1];
-	m_outputFilename = m_inputFilename.substr(0, m_inputFilename.find('.')) + ".cpp";
 
 	for (unsigned int currentIndex = 2; currentIndex < m_flagData.size(); ++currentIndex)
 	{
