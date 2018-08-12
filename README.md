@@ -11,7 +11,7 @@ Brainfuck is a classic esoteric programming language written by Urban Müller. I
 manipulate an array of 30,000 characters: `> < + - . , [ ]`. Braindigit takes Brainfuck code and turns it into something the 
 computer can understand, so that you can focus on your Brainfuck program that solves climate change, ends terrorism and
 prevents nuclear war. [Source code here, by the way](http://heeeeeeeey.com/).
-\
+
 Braindigit can...
 * Interpret Brainfuck code
 * Transpile Brainfuck code to C++, C, Python and Ruby
