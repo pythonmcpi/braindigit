@@ -77,6 +77,7 @@ void RubyTranspiler::evaluateProgram()
 			break;
 		case ',':
 			inputByte();
+			break;
 		case '[':
 			startLoop();
 			break;

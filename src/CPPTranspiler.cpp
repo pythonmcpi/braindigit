@@ -73,6 +73,7 @@ void CPPTranspiler::evaluateProgram()
 			break;
 		case ',':
 			inputByte();
+			break;
 		case '[':
 			startLoop();
 			break;
