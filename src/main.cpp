@@ -1,4 +1,7 @@
-#include "../h/Common.h"
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <vector>
 
 #include "../h/Flags.h"
 #include "../h/Interpreter.h"

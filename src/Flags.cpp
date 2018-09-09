@@ -13,7 +13,13 @@ Flags::Flags(int flagCount, char **flagData)
 
 void Flags::validateFlag(string flag)
 {
-	if (flag != "-v" &&
+	if (flag != "-h" &&
+		flag != "-help" &&
+		flag != "-v" &&
+		flag != "-version" &&
+		flag != "-d" &&
+		flag != "-debug" &&
+		flag != "-verbose" &&
 		flag != "-o" &&
 		flag != "-c" &&
 		flag != "-cpp" &&
@@ -33,13 +39,19 @@ void Flags::handleFlags()
 
 	m_inputFilename = m_flagData[1];
 
-	for (unsigned int currentIndex = 2; currentIndex < m_flagData.size(); ++currentIndex)
+	for (unsigned int currentIndex = 1; currentIndex < m_flagData.size(); ++currentIndex)
 	{
 		validateFlag(m_flagData[currentIndex]);
 
 		bool filenameProvided{ false };
 
-		if (m_flagData[currentIndex] == "-v")
+		if (m_flagData[currentIndex].find(".") != std::string::npos)
+			m_inputFilename = m_flagData[currentIndex];
+		else if (m_flagData[currentIndex] == "-h" || m_flagData[currentIndex] == "-help")
+			showHelp();
+		else if (m_flagData[currentIndex] == "-v" || m_flagData[currentIndex] == "-version")
+			showVersion();
+		else if (m_flagData[currentIndex] == "-d" || m_flagData[currentIndex] == "-debug" || m_flagData[currentIndex] == "-verbose")
 			m_verbose = true;
 		else if (m_flagData[currentIndex] == "-cpp" || m_flagData[currentIndex] == "-c++")
 			m_cppTranspile = true;
