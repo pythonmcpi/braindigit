@@ -34,7 +34,48 @@ void showHelp()
 
 void showVersion()
 {
-	std::cout << "Braindigit: the universal Brainfuck compiler, transpiler and interpreter\nVersion 0.1.0\n\nhttps://github.com/Dandigit/braindigit/\nCopyright (c) 2018 Daniel Boulton and contributors\n";
+	std::cout << "Braindigit: the universal Brainfuck compiler, transpiler and interpreter\nVersion 0.1.0 (compiled with " << getCompilerVersion() << ")\n\nhttps://github.com/Dandigit/braindigit/\nCopyright (c) 2018 Daniel Boulton and contributors\n";
 	exit(0);
+}
+
+string getCompilerVersion()
+{
+	#ifdef __CC_ARM
+	return "ARM C++";
+	#else
+	#ifdef __clang__
+	return "clang++";
+	#else
+	#ifdef __GNUC__
+	return "g++";
+	#else
+	#ifdef __HP_aCC
+	return "HP C++";
+	#else
+	#ifdef __IBMCPP__
+	return "IBM Z/OS C++";
+	#else
+	#ifdef __INTEL_COMPILER
+	return "intel";
+	#else
+	#ifdef _MSC_VER
+	return "msvc++";
+	#else
+	#ifdef __OPEN64__
+	return "open64";
+	#else
+	#ifdef __SUNPRO_C
+	return "Solaris Studio";
+	#else
+	return "unknown compiler";
+	#endif
+	#endif
+	#endif
+	#endif
+	#endif
+	#endif
+	#endif
+	#endif
+	#endif
 }
 	

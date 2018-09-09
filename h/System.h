@@ -14,7 +14,8 @@ void warning(string warningType, string warningMessage);
 void success(string action, string message);
 
 void showHelp();
-
 void showVersion();
+
+string getCompilerVersion();
 
 #endif
