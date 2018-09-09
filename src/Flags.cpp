@@ -11,28 +11,6 @@ Flags::Flags(int flagCount, char **flagData)
 	handleFlags();
 }
 
-void Flags::validateFlag(string flag)
-{
-	if (flag != "-h" &&
-		flag != "-help" &&
-		flag != "-v" &&
-		flag != "-version" &&
-		flag != "-d" &&
-		flag != "-debug" &&
-		flag != "-verbose" &&
-		flag != "-o" &&
-		flag != "-c" &&
-		flag != "-cpp" &&
-		flag != "-c++" &&
-		flag != "-python" &&
-		flag != "-py" &&
-		flag != "-ruby" &&
-		flag != "-rb")
-	{
-		error("Fatal error", "Invalid flag \"" + flag + "\"provided");
-	}
-}
-
 void Flags::handleFlags()
 {
 	if (m_flagData.size() < 2) error("Fatal error", "No input file provided");
@@ -41,8 +19,6 @@ void Flags::handleFlags()
 
 	for (unsigned int currentIndex = 1; currentIndex < m_flagData.size(); ++currentIndex)
 	{
-		validateFlag(m_flagData[currentIndex]);
-
 		bool filenameProvided{ false };
 
 		if (m_flagData[currentIndex].find(".") != std::string::npos)
@@ -65,6 +41,10 @@ void Flags::handleFlags()
 		{
 			m_outputFilename = m_flagData[++currentIndex];
 			filenameProvided = true;
+		}
+		else
+		{
+			error("Fatal error", "Invalid flag \"" + m_flagData[currentIndex] + "\"provided");
 		}
 
 		if (!(filenameProvided) && m_cppTranspile)
