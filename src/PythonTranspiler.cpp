@@ -43,6 +43,7 @@ void PythonTranspiler::startLoop()
 	m_outputFile << m_loopIndents << "while cells[ptr]:\n";
 	m_loopIndents += "\t";
 	++m_openLoops;
+	m_outputFile << m_loopIndents << "pass\n";
 }
 
 void PythonTranspiler::endLoop()
