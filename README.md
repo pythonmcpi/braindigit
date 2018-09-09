@@ -15,7 +15,6 @@ prevents nuclear war. [Source code here, by the way](http://heeeeeeeey.com/).
 Braindigit can...
 * Interpret Brainfuck code
 * Transpile Brainfuck code to C++, C, Python and Ruby
-* And, in the future, compile Brainfuck code with LLVM
 
 ## Installing Braindigit
 To get started with Braindigit, first [build it](https://github.com/Dandigit/braindigit/blob/master/BUILDING.md). After you've built it, I recommend 
