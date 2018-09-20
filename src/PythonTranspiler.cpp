@@ -4,7 +4,7 @@ PythonTranspiler::PythonTranspiler(const char program[], ofstream &outputFile) :
 	m_program{ program }, m_outputFile{ outputFile }, m_currentCell{ 0 }, m_openLoops{ 0 }, m_loopIndents{ "" }
 {
 	if (!(m_outputFile.is_open())) error("Internal error", "Could not create output file. Try running Braindigit as an administrator.");
-	warning("The Python transpiler is currently very buggy and inconsistent. If you're looking for a more stable interpreted implementation, prefer the Ruby transpiler");
+	warning("The Python transpiler is currently very buggy and inconsistent. If you're looking for a more stable interpreted implementation, prefer the Ruby transpiler.");
 	m_outputFile << "import sys\n\ncells = [0]\nptr = 0\n\n";
 }
 
