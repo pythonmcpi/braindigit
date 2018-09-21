@@ -48,7 +48,7 @@ void RubyTranspiler::startLoop()
 
 void RubyTranspiler::endLoop()
 {
-	if (m_loopIndents.length() > 2) m_loopIndents = m_loopIndents.substr(0, m_loopIndents.length() - 2);
+	if (m_loopIndents.length() > 1) m_loopIndents = m_loopIndents.substr(0, m_loopIndents.length() - 1);
 	else m_loopIndents = "";
 	m_outputFile << m_loopIndents << "end\n";
 	--m_openLoops;
