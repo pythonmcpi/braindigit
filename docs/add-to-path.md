@@ -7,17 +7,17 @@ easier, as you don't need to navigete to the directory it is stored in every tim
 ### Windows
 Search for 'edit the system environment variables' in the start menu and click on this entry:
 
-![Edit the system environment variables](https://github.com/Dandigit/braindigit/raw/master/md/img/add-to-path.PNG)
+![Edit the system environment variables](https://github.com/Dandigit/braindigit/raw/master/docs/img/add-to-path.PNG)
 
 A popup panel titled "System Properties" will appear. At the bottom of it, just above the OK, Cancel and Apply buttons is a button labelled 
 "Environment Variables" - click on it. Another popup will appear, this time titled "Environment Variables". There will be two fields. In the
 top field, labelled "User variables for <username>", double click on the entry named "Path".
   
-![Path popup box](https://github.com/Dandigit/braindigit/raw/master/md/img/path-field-entry.PNG)
+![Path popup box](https://github.com/Dandigit/braindigit/raw/master/docs/img/path-field-entry.PNG)
 
 Yet another popup will open (don't worry, this is the last one) containing a list of directories.
 
-![List of directories](https://github.com/Dandigit/braindigit/raw/master/md/img/path-variable-popup.PNG)
+![List of directories](https://github.com/Dandigit/braindigit/raw/master/docs/img/path-variable-popup.PNG)
 
 Click the "New" button in the sidebar, and enter the path to the folder containing your Braindigit.exe file in the text box that appears, e.g:
 ```
