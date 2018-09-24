@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/Dandigit/braindigit/raw/master/md/img/braindigit-logo.png"></img>
+<img src="https://github.com/Dandigit/braindigit/raw/master/docs/img/braindigit-logo.png"></img>
 <br>
 <a href="https://travis-ci.org/Dandigit/braindigit">
 <img src="https://travis-ci.org/Dandigit/braindigit.svg?branch=master"></img>
