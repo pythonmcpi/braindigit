@@ -23,14 +23,11 @@ Click the "New" button in the sidebar, and enter the path to the folder containi
 ```
 C:\The\Best\Program\Ever (contains Braindigit.exe)
 ```
-After you've done that, hit Enter, then click OK on all of the popups until they are gone. If you'd like to check that you didn't stuff
-something up, open a Command Prompt window and type
+After you've done that, hit Enter, then click OK on all of the popups until they are gone. If you'd like to check that you didn't stuff something up, open a Command Prompt window and type
 ```
-braindigit jsdkasdj.b
+braindigit -v
 ```
-If you get an error that says `(!) Fatal error: Could not open input file: jsdkasdj.b` you've successfully added Braindigit to you path. 
-However, if you get an error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` 
-you've done it wrong and need to start again.
+If you don't get version information from Braindigit, you've done it wrong and need to start again.
 
 ### macOS
 Open a Terminal window and enter the following:
@@ -42,11 +39,23 @@ to the folder containing Braindigit, e.g:
 ```
 /Users/dan/Braindigit
 ```
-Hit Ctrl+X and then press Y to exit Nano and save the file. If you'd like to check that you didn't stuff something up, open a Terminal 
-window and type
+Hit Ctrl+X and then press Y to exit Nano and save the file. If you'd like to check that you didn't stuff something up, open a Terminal window and type:
 ```
-braindigit jsdkasdj.b
+braindigit -v
 ```
-If you get an error that says `(!) Fatal error: Could not open input file: jsdkasdj.b` you've successfully added Braindigit to you path. 
-However, if you get an error saying `'braindigit' is not recognized as an internal or external command, operable program or batch file.` 
-you've done it wrong and need to start again.
+If you don't get version information from Braindigit, you've done it wrong and need to start again.
+
+### Linux
+Run the following command:
+```
+sudo nano ~/.profile
+```
+Enter your password when prompted. A text file will open in Nano containing a list of directories. Create a new line, then enter:
+```
+export PATH="/path/to/braindigit:$PATH"
+```
+where `/path/to/braindigit` is the directory containing the Braindigit executable. Hit Ctrl+X and then press Y to exit Nano and save the file. If you'd like to check that you didn't stuff something up, run:
+```
+braindigit -v
+```
+If you don't get version information from Braindigit, you've done it wrong and need to start again.
