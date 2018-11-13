@@ -30,5 +30,5 @@ from your command line, replacing `filename.b` with the name of your Brainfuck f
 Braindigit also offers some basic command line options to manipulate its behaviour. To list them all, simply run:
 `braindigit -h`.
 
-# Credits
+## Credits
 Braindigit is able to compile to an executable thanks to [`TinyCC`](https://repo.or.cz/w/tinycc.git).
