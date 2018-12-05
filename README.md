@@ -17,8 +17,8 @@ Braindigit can...
 * Transpile Brainfuck code to C++, C, Python and Ruby
 
 ## Installing Braindigit
-To get started with Braindigit, first [build it](https://github.com/Dandigit/braindigit/blob/master/docs/build.md). After you've built it, I recommend 
-[adding it to the PATH](https://github.com/Dandigit/braindigit/blob/master/docs/add-to-path.md) and then you're good to go!
+To get started with Braindigit, first [build it](https://github.com/Dandigit/braindigit/blob/master/docs/01-build.md). After you've built it, I recommend 
+[adding it to the PATH](https://github.com/Dandigit/braindigit/blob/master/docs/02-add-to-path.md) and then you're good to go!
 
 ## Using Braindigit
 So, you've got Braindigit and a freshly written Brainfuck Hello World program. To run it with Braindigit, simply run:
